@@ -1,0 +1,47 @@
+function add(a, b) {
+    return a + b;
+}
+
+const addArrow = (a, b) => a + b;
+
+console.log("Regular Function (add):", add(5, 3));   
+console.log("Arrow Function (addArrow):", addArrow(5, 3)); 
+
+const greetArrow = () => "Hello, World!";
+console.log("Greet Arrow Function:", greetArrow());  
+
+const squareArrow = x => x * x;
+console.log("Square Arrow Function (5):", squareArrow(5));  
+
+const sumArrow = (a, b) => {
+    const result = a + b;
+    return result;
+};
+console.log("Sum Arrow Function (3 + 4):", sumArrow(3, 4));  
+
+const person = {
+    name: "Alice",
+    age: 25,
+    regularFunction: function() {
+        console.log("Regular Function 'this' refers to:", this.name);
+    },
+    arrowFunction: () => {
+        console.log("Arrow Function 'this' refers to:", this.name);
+    }
+};
+
+person.regularFunction(); 
+person.arrowFunction();   
+
+const numbers = [1, 2, 3, 4, 5];
+
+const doubledRegular = numbers.map(function(num) {
+    return num * 2;
+});
+
+const doubledArrow = numbers.map(num => num * 2);
+
+
+console.log("Doubled using Regular Function:", doubledRegular);  
+console.log("Doubled using Arrow Function:", doubledArrow);   
+

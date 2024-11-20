@@ -1,0 +1,161 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class UpdateServlet
+ */
+@WebServlet("/UpdateDetails")
+public class UpdateServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    // Database connection constants
+    private static final String DB_DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/sripaada";
+    private static final String DB_USERNAME = "root";
+    private static final String DB_PASSWORD = "1234";
+
+    // Constructor
+    public UpdateServlet() {
+        super();
+    }
+
+    // Method to get the database connection
+    private static Connection getConnection() {
+        Connection con = null;
+
+        try {
+            // Load the JDBC driver
+            Class.forName(DB_DRIVER_CLASS);
+            System.out.println("Driver loaded");
+
+            // Establish the connection
+            con = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+            System.out.println("Connection established");
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return con;
+    }
+
+    // Handle GET requests
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Connection con = null;
+        PreparedStatement st = null;
+        PrintWriter pw = response.getWriter();
+
+        // Set response content type
+        response.setContentType("text/html");
+
+        // Get the connection
+        con = getConnection();
+
+        // Get form parameters
+        String user = request.getParameter("username");
+        String pwd = request.getParameter("password");
+        String email = request.getParameter("email");
+
+        try {
+            // Prepare SQL query to update user details
+            st = con.prepareStatement("UPDATE studentdata SET password=?, email=? WHERE username=?");
+            st.setString(1, pwd);
+            st.setString(2, email);
+            st.setString(3, user);
+
+            // Execute the update query
+            int r = st.executeUpdate();
+
+            // Send the response based on update success
+            if (r > 0) {
+                pw.println("<h1>Hi " + user + ", your password and email have been updated successfully.</h1>");
+            } else {
+                pw.println("<h1>User not found!</h1>");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            pw.println("<h1>Database error occurred.</h1>");
+        }
+    }
+
+    // Handle POST requests (forward to doGet)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+}
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="ISO-8859-1">
+
+<title>Insert title here</title>
+
+<style>
+
+div{
+
+background-color:lightgreen;
+
+color:Red;
+
+padding:20px;
+
+margin:20px;
+
+border:2px yellow;
+
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+<div>
+
+<h1>Updating User details</h1>
+
+<form action="UpdateDetails" method="post">
+
+<label>Username :</label><input type="text" name="username" >
+
+<br>
+
+<h3>give updated details of the above user</h3>
+
+<label>Password: </label><input type="password" name="password" >
+
+<label>email: </label><input type="email" name="email" >
+
+<input type="submit" name="submit">
+
+</form>
+
+</div>
+
+</body>
+
+</html>

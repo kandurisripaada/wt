@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline Internal and External CSS</title>
+    
+    <!-- External CSS link (simulated by internal styles for the example) -->
+    <link rel="stylesheet" href="styles.css"> 
+
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightgray;
+        }
+
+        .internal-style {
+            color: blue;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="internal-style">This is using internal CSS.</h1>
+
+    <p class="external-style">This is using external CSS. The style for this will be defined in an external file.</p>
+
+    <script>
+        // Inline styles are applied directly in the HTML
+        const externalParagraph = document.querySelector('.external-style');
+        externalParagraph.style.color = 'green';  // This is inline style manipulation
+    </script>
+</body>
+</html>
+
+
+
+
+/* styles.css - External CSS */
+.external-style {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+

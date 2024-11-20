@@ -1,0 +1,53 @@
+let text = "Hello, JavaScript!";
+
+// 1. length - Returns the length of the string
+console.log("Length:", text.length); // 17
+
+// 2. toUpperCase() - Converts the string to uppercase
+console.log("Uppercase:", text.toUpperCase()); // "HELLO, JAVASCRIPT!"
+
+// 3. toLowerCase() - Converts the string to lowercase
+console.log("Lowercase:", text.toLowerCase()); // "hello, javascript!"
+
+// 4. includes() - Checks if the string contains a specified substring
+console.log("Includes 'Java':", text.includes("Java")); // true
+
+// 5. indexOf() - Returns the index of the first occurrence of a specified substring
+console.log("Index of 'Java':", text.indexOf("Java")); // 7
+
+// 6. slice(start, end) - Extracts a section of the string
+let slicedText = text.slice(7, 17);
+console.log("Slice:", slicedText); // "JavaScript"
+
+// 7. replace(search, replaceWith) - Replaces a substring with another substring
+let replacedText = text.replace("JavaScript", "World");
+console.log("Replace:", replacedText); // "Hello, World!"
+
+// 8. split(separator) - Splits the string into an array of substrings
+let words = text.split(" ");
+console.log("Split:", words); // ["Hello,", "JavaScript!"]
+
+// 9. trim() - Removes whitespace from both ends of the string
+let spacedText = "   Hello!   ";	
+console.log("Trimmed:", spacedText.trim()); // "Hello!"
+
+// 10. charAt(index) - Returns the character at the specified index
+console.log("Character at index 1:", text.charAt(1)); // "e"
+
+// 11. startsWith() - Checks if the string starts with a specified substring
+console.log("Starts with 'Hello':", text.startsWith("Hello")); // true
+
+// 12. endsWith() - Checks if the string ends with a specified substring
+console.log("Ends with '!':", text.endsWith("!")); // true
+
+// 13. repeat(n) - Repeats the string n times
+console.log("Repeat:", text.repeat(2)); // "Hello, JavaScript!Hello, JavaScript!"
+
+// 14. substring(start, end) - Returns a part of the string between start and end (similar to slice)
+let subStringText = text.substring(7, 17);
+console.log("Substring:", subStringText); // "JavaScript"
+
+// 15. concat(...strings) - Concatenates two or more strings
+let greeting = "Hello";
+let name = "Alice";
+console.log("Concat:", greeting.concat(", ", name, "!")); // "Hello, Alice!"

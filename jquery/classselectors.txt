@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Select Element by Class</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Highlight elements with class mark
+    $(".mark").css("background", "yellow");
+    $("#markfont").css("color","blue");
+	$("h1").css("color","red");
+});
+</script>
+</head>
+<body>
+    <p class="mark">This is a paragraph.</p>
+    <p class="mark">This is another paragraph.</p>
+    <p id="markfont">This is one more paragraph.</p>
+	<h1>hello</h1>
+</body>
+</html>

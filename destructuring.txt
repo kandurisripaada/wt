@@ -1,0 +1,45 @@
+// 1. Array Destructuring
+// Sample array of numbers
+const numbers = [10, 20, 30, 40, 50];
+
+// Destructuring the first three elements from the array
+const [first, second, third] = numbers;
+
+console.log("Array Destructuring:");
+console.log("First Number:", first);   // 10
+console.log("Second Number:", second); // 20
+console.log("Third Number:", third);   // 30
+
+// Skipping elements
+const [, , fourth] = numbers; // Skip first two elements
+console.log("Fourth Number (skipped first two):", fourth); // 30
+
+// Default value
+const [a, b, c, d = 100] = numbers; // d gets the default value if not present
+console.log("Default Value for d:", d); // 100
+
+// 2. Object Destructuring
+// Sample object representing a user profile
+const userProfile = {
+    username: "johndoe",
+    email: "johndoe@example.com",
+    address: {
+        city: "New York",
+        country: "USA"
+    }
+};
+
+// Destructuring properties from the object
+const { username, email } = userProfile;
+
+console.log("\nObject Destructuring:");
+console.log("Username:", username); // "johndoe"
+console.log("Email:", email);       // "johndoe@example.com"
+
+// Nested destructuring to access the city
+const { address: { city } } = userProfile;
+console.log("City:", city); // "New York"
+
+// Destructuring with default value
+const { phone = "Not provided" } = userProfile; // phone doesn't exist
+console.log("Phone:", phone); // "Not provided"

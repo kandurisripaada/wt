@@ -1,0 +1,51 @@
+package jdbc;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class ExecuteStoredProcedure {
+    public static void main(String[] args) {
+        // Database credentials
+        String jdbcURL = "jdbc:mysql://localhost:3306/sripaada"; // Replace with your database URL
+        String username = "root"; // Replace with your MySQL username
+        String password = "1234"; // Replace with your MySQL password
+
+        // Stored procedure call
+        String storedProcedureCall = "{insert into student(?, ?, ?)}";
+
+        try (Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+             CallableStatement callableStatement = connection.prepareCall(storedProcedureCall);
+             Scanner scanner = new Scanner(System.in)) {
+
+            // Input for department ID to update salaries
+            System.out.print("Enter department ID to update employee salaries: ");
+            int deptId = scanner.nextInt();
+            
+            scanner.nextLine(); // Consume the newline
+            System.out.print("Enter Book Title: ");
+            String title = scanner.nextLine();
+
+
+            // Input for inserting a book
+            System.out.print("Enter Book ID: ");
+            int bookId = scanner.nextInt();
+            
+            
+
+            // Set parameters for the stored procedure
+            callableStatement.setInt(1, deptId);          // department ID for salary update
+            callableStatement.setString(2, title);        // book title
+
+            callableStatement.setInt(3, bookId);          // book ID
+            
+
+            // Execute the stored procedure
+            callableStatement.execute();
+
+            System.out.println("Employee salaries updated and book inserted successfully!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}

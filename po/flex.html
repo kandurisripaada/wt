@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Wrap Example</title>
+
+  <style>
+    /* Flexbox Container */
+    .container {
+      display: flex;                /* Enables Flexbox */
+      flex-wrap: wrap;              /* Allows items to wrap to the next line */
+      gap: 10px;                    /* Space between items */
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    /* Individual flex items */
+    .box {
+      background-color: #007BFF;    /* Blue color for boxes */
+      color: white;
+      padding: 20px;
+      width: 150px;
+      height: 100px;
+      display: flex;
+      align-items: center;          /* Centers text vertically */
+      justify-content: center;      /* Centers text horizontally */
+      font-size: 1em;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flexbox Container -->
+  <div class="container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+    <div class="box">Box 4</div>
+    <div class="box">Box 5</div>
+    <div class="box">Box 6</div>
+    <div class="box">Box 7</div>
+    <div class="box">Box 8</div>
+    <div class="box">Box 9</div>
+  </div>
+
+</body>
+</html>

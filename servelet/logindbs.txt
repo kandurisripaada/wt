@@ -1,0 +1,174 @@
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+
+
+
+/**
+
+* Servlet implementation class LoginServletNew
+
+*/
+
+@WebServlet(description = "Checks the hard coded UserName and Password by the user credentials", urlPatterns = { "/LoginServletNew" })
+
+public class LoginServletNew extends HttpServlet {
+
+private static final long serialVersionUID = 1L;
+
+private final String validUsername = "Ramesh";
+
+private final String validPassword = "chand#123";
+
+
+
+
+/**
+
+* @see HttpServlet#HttpServlet()
+
+*/
+
+public LoginServletNew() {
+
+super();
+
+System.out.println("Servlet Constructor is called once @ instantiation");
+
+}
+
+
+
+
+
+
+
+/**
+
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+
+*/
+
+@Override
+
+public void doPost(HttpServletRequest request, HttpServletResponse response)
+
+throws ServletException, IOException {
+
+
+
+
+// Get username and password from the request
+
+String username = request.getParameter("username");
+
+String password = request.getParameter("password");
+
+
+
+
+// Validate the user credentials
+
+if (validUsername.equals(username) && validPassword.equals(password)) {
+
+// If valid, display welcome message
+
+response.setContentType("text/html");
+
+PrintWriter out = response.getWriter();
+
+// Get current date and time
+
+SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+Date date = new Date();
+
+out.println("<html><body>");
+
+out.println("<h1>Welcome, " + username + "!</h1>");
+
+out.println("<p>Current Date and Time: " + formatter.format(date) + "</p>");
+
+out.println("</body></html>");
+
+} else {
+
+// If invalid, display an error message
+
+response.setContentType("text/html");
+
+PrintWriter out = response.getWriter();
+
+out.println("<html><body>");
+
+out.println("<h1>Invalid username or password!</h1>");
+
+out.println("<a href=\"LoginServletNew.html\">Try Again</a>");
+
+out.println("</body></html>");
+
+}
+
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="ISO-8859-1">
+
+<title>Insert title here</title>
+
+</head>
+
+<body>
+
+<h2>Login Page</h2>
+
+<form action="LoginServletNew" method="post">
+
+<label for="username">Username:</label>
+
+<input type="text" id="username" name="username" required><br><br>
+
+<label for="password">Password:</label>
+
+<input type="password" id="password" name="password" required><br><br>
+
+<input type="submit" value="Login">
+
+</form>
+
+</body>
+
+</html>

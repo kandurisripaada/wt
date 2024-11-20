@@ -1,0 +1,57 @@
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.GenericServlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebServlet;
+
+@WebServlet("/Servletlifecyclemethods")
+
+public class ServletLifeCycleMethods  extends GenericServlet{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private int requestCount;
+
+    // Constructor (optional)
+    public ServletLifeCycleMethods() {
+        System.out.println("Servlet is being instantiated.");
+    }
+
+    // Initialization (called once when the servlet is first loaded)
+    public void init() throws ServletException {
+        requestCount = 0;  // Initialize the request counter
+        System.out.println("init() method called.");
+    }
+
+    // Service method (called for each client request)
+    @Override
+    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        // Increment the request counter for each incoming request
+        requestCount++;
+       
+        System.out.println("service() method called. Request count: " + requestCount);
+
+        // Set content type for response
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        // Send a basic HTML response to the client
+        out.println("<html><body style='background-color:green;color:white'>");
+        out.println("<h2>Welcome to the Basic Servlet Life Cycle Example</h2>");
+        out.println("<p><h2>This servlet has served " + requestCount + " request(s).</h2></p>");
+        out.println("</body></html>");
+    }
+
+    // Destruction (called once before the servlet is destroyed)
+    @Override
+    public void destroy() {
+        System.out.println("destroy() method called.");
+    }
+
+}

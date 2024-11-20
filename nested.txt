@@ -1,0 +1,37 @@
+// Creating a nested object representing a person
+let person = {
+    name: "John Doe",
+    age: 30,
+    address: {
+        street: "123 Main St",
+        city: "Anytown",
+        state: "CA",
+        zip: "12345"
+    },
+    hobbies: ["reading", "traveling", "gaming"],
+    contact: {
+        email: "john.doe@example.com",
+        phone: {
+            home: "123-456-7890",
+            mobile: "987-654-3210"
+        }
+    }
+};
+
+// Accessing properties of the nested object
+console.log("Name:", person.name); // "John Doe"
+console.log("City:", person.address.city); // "Anytown"
+console.log("Mobile Phone:", person.contact.phone.mobile); // "987-654-3210"
+console.log("First Hobby:", person.hobbies[0]); // "reading"
+
+// Modifying a property in the nested object
+person.age = 31;
+console.log("Updated Age:", person.age); // 31
+
+// Adding a new property to the nested object
+person.address.country = "USA";
+console.log("Updated Address:", person.address); // { street: '123 Main St', city: 'Anytown', state: 'CA', zip: '12345', country: 'USA' }
+
+// Deleting a property from the nested object
+delete person.hobbies[1]; // Removes "traveling"
+console.log("Updated Hobbies:", person.hobbies); // ["reading", "gaming"]

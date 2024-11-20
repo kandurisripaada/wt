@@ -1,0 +1,25 @@
+// Array of numbers
+let numbers = [5, 3, 8, 1, 2];
+
+// Sort numbers in ascending order
+let sortedNumbers = numbers.sort((a, b) => a - b);
+console.log("Sorted Numbers (Ascending):", sortedNumbers); // [1, 2, 3, 5, 8]
+
+// Sort numbers in descending order
+let sortedNumbersDesc = numbers.sort((a, b) => b - a);
+console.log("Sorted Numbers (Descending):", sortedNumbersDesc); // [8, 5, 3, 2, 1]
+
+// Array of strings
+let fruits = ["banana", "apple", "mango", "orange"];
+
+// Sort strings in alphabetical order
+let sortedFruits = fruits.sort();
+console.log("Sorted Fruits (Alphabetical):", sortedFruits); // ["apple", "banana", "mango", "orange"]
+
+// Reverse the order of the numbers array
+let reversedNumbers = sortedNumbersDesc.reverse();
+console.log("Reversed Numbers:", reversedNumbers); // [1, 2, 3, 5, 8]
+
+// Reverse the order of the fruits array
+let reversedFruits = sortedFruits.reverse();
+console.log("Reversed Fruits:", reversedFruits); // ["orange", "mango", "banana", "apple"]

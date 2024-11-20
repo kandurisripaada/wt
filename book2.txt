@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE bookstore [
+
+<!ELEMENT bookstore (book+)>
+
+<!ELEMENT book (title, author, year, publisher)>
+
+<!ATTLIST book category CDATA #REQUIRED>
+
+
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT year (#PCDATA)>
+
+<!ELEMENT publisher (#PCDATA)>
+
+]>
+
+<bookstore>
+
+<book category="fiction">
+
+<title>The Great Gatsby</title>
+
+<author>F. Scott Fitzgerald</author>
+
+<year>1925</year>
+
+<publisher>Scribner</publisher>
+
+</book>
+
+<book category="programming">
+
+<title>Learning XML</title>
+
+<author>Erik T. Ray</author>
+
+<year>2003</year>
+
+<publisher>O'Reilly Media</publisher>
+
+</book>
+
+</bookstore>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery Document Ready Demo</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Highlight element with id mark
+    $("#mark").css("background", "GreenYellow");
+    $(".mark1").css("background","blue");
+});
+</script>
+</head>
+<body>
+    <p id="mark">This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <p class="mark1">This is one more paragraph.</p>
+    <p><strong>Note:</strong> The value of the id attribute must be unique in an HTML document.</p>
+</body>
+</html>

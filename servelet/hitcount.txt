@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<html>
+<head>
+    <title>Hit Counter</title>
+</head>
+<body>
+    <h2>Welcome to the Hit Counter Page!</h2>
+
+    <%-- Checking if the session hit count is already set --%>
+    <%
+        Integer hitCount = (Integer) session.getAttribute("hitCount");
+
+        if (hitCount == null) {
+            // If it's the first visit, initialize the hit count
+            hitCount = 0;
+        }
+
+        // Increment the hit count
+        hitCount++;
+
+        // Set the updated hit count back into the session
+        session.setAttribute("hitCount", hitCount);
+    %>
+
+    <h3>You have visited this page <%= hitCount %> times during this session.</h3>
+</body>
+</html>
